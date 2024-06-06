@@ -10,7 +10,7 @@ type Listener1 struct {
 }
 
 func (a *Listener1) HandleEvent(event Event) error {
-	fmt.Println("this listener1 event:%v", event)
+	fmt.Println("this listener1 event", event)
 	return nil
 }
 
@@ -18,6 +18,6 @@ type Listener2 struct {
 }
 
 func (l *Listener2) HandleEvent(event Event) error {
-	fmt.Println("this listener2 event:%v", event)
+	fmt.Println("this listener2 event:", event)
 	return nil
 }

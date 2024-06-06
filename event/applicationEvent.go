@@ -33,6 +33,9 @@ func NewAppEventManager() *AppEventManager {
 func (a *AppEventManager) HandleEvents() {
 	go func() {
 		for {
+			if a.Closed {
+				return
+			}
 			select {
 			case event, ok := <-a.EventChan:
 				if ok {
@@ -43,7 +46,7 @@ func (a *AppEventManager) HandleEvents() {
 						}
 					}
 				} else {
-					// 为啥会一直打印？
+					// 为啥会一直打印？--因为for循环一直没跳出
 					fmt.Println("manager is closed")
 					break
 				}
